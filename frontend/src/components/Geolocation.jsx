@@ -10,29 +10,32 @@ const Geolocation = () => {
   const [radius, setRadius] = useState(100);
   const [searchParams] = useSearchParams();
 
-  const fetchRestaurants = useCallback(async (lat, lng) => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `https://restaurant-production-06c2.up.railway.app/api/restaurants/geolocation?lat=${lat}&lng=${lng}&radius=${radius}`
-      );
-      const data = await response.json();
+  const fetchRestaurants = useCallback(
+    async (lat, lng) => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `https://food-webapp-backend-jrdu.onrender.com/api/restaurants/geolocation?lat=${lat}&lng=${lng}&radius=${radius}`
+        );
+        const data = await response.json();
 
-      console.log("API Response:", JSON.stringify(data, null, 2)); // Debugging
+        console.log("API Response:", JSON.stringify(data, null, 2)); // Debugging
 
-      if (Array.isArray(data)) {
-        setRestaurants(data);
-      } else {
-        console.error("Invalid data format:", data);
-        setRestaurants([]); // Clear state if data is incorrect
+        if (Array.isArray(data)) {
+          setRestaurants(data);
+        } else {
+          console.error("Invalid data format:", data);
+          setRestaurants([]); // Clear state if data is incorrect
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setRestaurants([]); // Clear the restaurants state on error
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setRestaurants([]); // Clear the restaurants state on error
-    } finally {
-      setLoading(false);
-    }
-  }, [radius]);
+    },
+    [radius]
+  );
 
   useEffect(() => {
     const lat = searchParams.get("lat");

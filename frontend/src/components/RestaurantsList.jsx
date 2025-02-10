@@ -16,7 +16,7 @@ const RestaurantsList = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://restaurant-production-06c2.up.railway.app/api/restaurants?limit=1000${
+        `https://food-webapp-backend-jrdu.onrender.com/api/restaurants?limit=1000${
           city ? `&city=${city}` : ""
         }`
       );

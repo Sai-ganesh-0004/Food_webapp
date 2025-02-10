@@ -32,7 +32,7 @@ const Home = () => {
       const formData = new FormData();
       formData.append("image", file);
 
-      fetch("/api/image-search", {
+      fetch("https://food-webapp-backend-jrdu.onrender.com/api/image-search", {
         method: "POST",
         body: formData,
       })

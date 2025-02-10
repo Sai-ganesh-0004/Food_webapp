@@ -13,6 +13,10 @@ const db = require("./db");
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("✅ Food WebApp Backend is running!");
+});
+
 // Define API routes
 app.use("/api/restaurants", locationRoutes);
 app.use("/api/restaurants", restaurantRoutes);

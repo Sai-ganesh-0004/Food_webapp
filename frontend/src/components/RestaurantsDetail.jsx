@@ -9,7 +9,7 @@ const RestaurantsDetail = () => {
     const fetchRestaurant = async () => {
       try {
         const response = await fetch(
-          `https://food-webapp-backend-jrdu.onrender.com/api/restaurants/${id}`
+          `https://restaurant-production-06c2.up.railway.app/api/restaurants/${id}`
         );
         const data = await response.json();
         setRestaurant(data.restaurant);

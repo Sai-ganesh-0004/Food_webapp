@@ -1,4 +1,4 @@
-```markdown
+
 # Zomato Restaurant Listing & Searching Web App
 
 Hey everyone! This is my project on restaurant listing and searching, inspired by Zomato. The idea is to create a complete web application where users can find restaurants, check their details, and even search for places based on location or food images!
